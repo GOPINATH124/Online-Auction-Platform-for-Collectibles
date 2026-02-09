@@ -1,0 +1,70 @@
+.social-share {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin: 16px 0;
+}
+
+.share-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  color: white;
+  font-size: 0.9rem;
+}
+
+.share-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.share-btn.whatsapp {
+  background: #25D366;
+}
+
+.share-btn.whatsapp:hover {
+  background: #1da851;
+}
+
+.share-btn.facebook {
+  background: #1877F2;
+}
+
+.share-btn.facebook:hover {
+  background: #145dbf;
+}
+
+.share-btn.twitter {
+  background: #1DA1F2;
+}
+
+.share-btn.twitter:hover {
+  background: #1a8cd8;
+}
+
+.share-btn.copy-link {
+  background: #7f8c8d;
+}
+
+.share-btn.copy-link:hover {
+  background: #5f6c6d;
+}
+
+.share-btn svg {
+  flex-shrink: 0;
+}
+
+/* Dark mode adjustments */
+body.dark-mode .share-btn {
+  opacity: 0.95;
+}
+
+body.dark-mode .share-btn:hover {
+  opacity: 1;
+}

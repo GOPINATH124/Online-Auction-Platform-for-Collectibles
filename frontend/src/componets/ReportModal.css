@@ -1,0 +1,88 @@
+.report-modal {
+  background: white;
+  border-radius: 16px;
+  padding: 0;
+  width: 90%;
+  max-width: 500px;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+}
+
+.auction-info {
+  background: #f8f9fa;
+  padding: 12px 16px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+}
+
+.auction-info p {
+  margin: 0;
+  color: #2c3e50;
+}
+
+.form-group select,
+.form-group textarea {
+  width: 100%;
+  padding: 12px;
+  font-size: 1rem;
+  border: 2px solid #e0e0e0;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  font-family: inherit;
+}
+
+.form-group select:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: #e74c3c;
+  box-shadow: 0 0 0 3px rgba(231, 76, 60, 0.1);
+}
+
+.form-group textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+.warning-box {
+  background: #fff3cd;
+  border: 1px solid #ffc107;
+  color: #856404;
+  padding: 12px 16px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+}
+
+.warning-box p {
+  margin: 0;
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+/* Dark mode support */
+body.dark-mode .report-modal {
+  background: #2d2d2d;
+  color: #e4e4e4;
+}
+
+body.dark-mode .auction-info {
+  background: #1a1a1a;
+  border: 1px solid #3a3a3a;
+}
+
+body.dark-mode .auction-info p {
+  color: #e4e4e4;
+}
+
+body.dark-mode .form-group select,
+body.dark-mode .form-group textarea {
+  background: #1a1a1a;
+  color: #e4e4e4;
+  border-color: #3a3a3a;
+}
+
+body.dark-mode .warning-box {
+  background: #3a2a1a;
+  border-color: #5a4a2a;
+  color: #ffb84d;
+}

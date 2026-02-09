@@ -1,0 +1,151 @@
+/* Dark Mode Variables */
+:root {
+  --bg-primary: #ffffff;
+  --bg-secondary: #f5f7fa;
+  --bg-card: #ffffff;
+  --text-primary: #2c3e50;
+  --text-secondary: #7f8c8d;
+  --border-color: #e0e0e0;
+  --shadow: rgba(0, 0, 0, 0.1);
+  --input-bg: #ffffff;
+  --hover-bg: #f8f9fa;
+}
+
+body.dark-mode {
+  --bg-primary: #1a1a1a;
+  --bg-secondary: #2d2d2d;
+  --bg-card: #252525;
+  --text-primary: #e4e4e4;
+  --text-secondary: #b0b0b0;
+  --border-color: #3a3a3a;
+  --shadow: rgba(0, 0, 0, 0.3);
+  --input-bg: #2d2d2d;
+  --hover-bg: #3a3a3a;
+}
+
+body {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Dark mode for cards and sections */
+body.dark-mode .dashboard-container,
+body.dark-mode .auctions-container,
+body.dark-mode .payment-container,
+body.dark-mode .profile-container,
+body.dark-mode .auction-card,
+body.dark-mode .stat-card,
+body.dark-mode .quick-action-card,
+body.dark-mode .bid-item,
+body.dark-mode .purchase-item {
+  background-color: var(--bg-card);
+  border-color: var(--border-color);
+  color: var(--text-primary);
+}
+
+body.dark-mode .auction-card:hover,
+body.dark-mode .quick-action-card:hover {
+  background-color: var(--hover-bg);
+}
+
+/* Dark mode for inputs and forms */
+body.dark-mode input,
+body.dark-mode textarea,
+body.dark-mode select {
+  background-color: var(--input-bg);
+  color: var(--text-primary);
+  border-color: var(--border-color);
+}
+
+body.dark-mode input::placeholder,
+body.dark-mode textarea::placeholder {
+  color: var(--text-secondary);
+}
+
+/* Dark mode for navbar */
+body.dark-mode .navbar {
+  background: linear-gradient(135deg, #2d2d2d 0%, #1a1a1a 100%);
+  border-bottom-color: var(--border-color);
+}
+
+body.dark-mode .nav-link {
+  color: var(--text-primary);
+}
+
+body.dark-mode .nav-link:hover {
+  background-color: var(--hover-bg);
+}
+
+/* Dark mode for buttons */
+body.dark-mode .secondary-button,
+body.dark-mode .cancel-button {
+  background-color: var(--bg-secondary);
+  color: var(--text-primary);
+  border-color: var(--border-color);
+}
+
+body.dark-mode .secondary-button:hover,
+body.dark-mode .cancel-button:hover {
+  background-color: var(--hover-bg);
+}
+
+/* Dark mode for shadows */
+body.dark-mode .auction-card,
+body.dark-mode .stat-card,
+body.dark-mode .payment-container {
+  box-shadow: 0 4px 8px var(--shadow);
+}
+
+/* Dark mode for text colors */
+body.dark-mode h1,
+body.dark-mode h2,
+body.dark-mode h3,
+body.dark-mode h4,
+body.dark-mode h5,
+body.dark-mode h6 {
+  color: var(--text-primary);
+}
+
+body.dark-mode p,
+body.dark-mode span,
+body.dark-mode label {
+  color: var(--text-secondary);
+}
+
+/* Dark mode for modals */
+body.dark-mode .modal-content,
+body.dark-mode .dialog-content {
+  background-color: var(--bg-card);
+  border-color: var(--border-color);
+}
+
+/* Dark mode for tables */
+body.dark-mode table {
+  background-color: var(--bg-card);
+  color: var(--text-primary);
+}
+
+body.dark-mode th,
+body.dark-mode td {
+  border-color: var(--border-color);
+}
+
+body.dark-mode tr:hover {
+  background-color: var(--hover-bg);
+}
+
+/* Theme toggle button */
+.theme-toggle {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 8px;
+  transition: background-color 0.3s ease;
+}
+
+.theme-toggle:hover {
+  background-color: var(--hover-bg);
+}

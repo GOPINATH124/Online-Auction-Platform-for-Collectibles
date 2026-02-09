@@ -1,0 +1,115 @@
+/* Badge Display Styles */
+
+.badge-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 12px 0;
+}
+
+.badge-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 14px;
+  background: linear-gradient(135deg, rgba(102, 126, 234, 0.1), rgba(118, 75, 162, 0.1));
+  border: 2px solid rgba(102, 126, 234, 0.3);
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #667eea;
+  cursor: help;
+  transition: all 0.3s ease;
+  animation: badgePop 0.5s ease-out;
+}
+
+.badge-item:hover {
+  transform: translateY(-2px) scale(1.05);
+  box-shadow: 0 6px 16px rgba(102, 126, 234, 0.3);
+  border-color: #667eea;
+}
+
+.badge-icon {
+  font-size: 16px;
+  animation: float 3s ease-in-out infinite;
+}
+
+.badge-name {
+  white-space: nowrap;
+}
+
+@keyframes badgePop {
+  0% {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-3px);
+  }
+}
+
+/* Specific badge colors */
+.badge-item[title*="Verified Seller"] {
+  background: linear-gradient(135deg, rgba(17, 153, 142, 0.1), rgba(56, 239, 125, 0.1));
+  border-color: rgba(17, 153, 142, 0.3);
+  color: #11998e;
+}
+
+.badge-item[title*="Top Bidder"] {
+  background: linear-gradient(135deg, rgba(245, 87, 108, 0.1), rgba(240, 147, 251, 0.1));
+  border-color: rgba(245, 87, 108, 0.3);
+  color: #f5576c;
+}
+
+.badge-item[title*="Trusted Buyer"] {
+  background: linear-gradient(135deg, rgba(79, 172, 254, 0.1), rgba(0, 242, 254, 0.1));
+  border-color: rgba(79, 172, 254, 0.3);
+  color: #4facfe;
+}
+
+.badge-item[title*="Power Seller"] {
+  background: linear-gradient(135deg, rgba(255, 215, 0, 0.2), rgba(255, 165, 0, 0.2));
+  border-color: rgba(255, 165, 0, 0.5);
+  color: #ff8c00;
+}
+
+.badge-item[title*="Auction Master"] {
+  background: linear-gradient(135deg, rgba(138, 43, 226, 0.1), rgba(75, 0, 130, 0.1));
+  border-color: rgba(138, 43, 226, 0.3);
+  color: #8a2be2;
+}
+
+.badge-item[title*="Big Spender"] {
+  background: linear-gradient(135deg, rgba(218, 165, 32, 0.2), rgba(184, 134, 11, 0.2));
+  border-color: rgba(218, 165, 32, 0.5);
+  color: #daa520;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .badge-container {
+    gap: 6px;
+  }
+
+  .badge-item {
+    padding: 4px 10px;
+    font-size: 11px;
+  }
+
+  .badge-icon {
+    font-size: 14px;
+  }
+}
