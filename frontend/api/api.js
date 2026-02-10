@@ -1,7 +1,7 @@
 import axios from "axios";
 
 // Base URL for backend
-const BASE_URL = "http://localhost:5000/api";
+const BASE_URL = "https://online-auction-platform-for-collectible.onrender.com/api";
 
 // Get token from localStorage
 const getAuthHeaders = () => {
