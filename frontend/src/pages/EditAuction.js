@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useToast } from '../componets/ToastContainer';
+import { BASE_URL } from '../config/apiConfig';
 import './CreateAuction.css';
 
 const EditAuction = () => {
@@ -27,7 +28,7 @@ const EditAuction = () => {
 
   const fetchAuction = async () => {
     try {
-      const res = await axios.get(`http://localhost:5000/api/auctions/${id}`, {
+      const res = await axios.get(`${BASE_URL}/auctions/${id}`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       
@@ -98,7 +99,7 @@ const EditAuction = () => {
         });
       }
 
-      await axios.put(`http://localhost:5000/api/auctions/${id}`, data, {
+      await axios.put(`${BASE_URL}/auctions/${id}`, data, {
         headers: {
           Authorization: `Bearer ${token}`,
           'Content-Type': 'multipart/form-data'
@@ -249,3 +250,4 @@ const EditAuction = () => {
 };
 
 export default EditAuction;
+

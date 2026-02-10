@@ -2,6 +2,7 @@ import axios from "axios";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useToast } from "../componets/ToastContainer";
+import { BASE_URL } from "../config/apiConfig";
 import './Login.css';
 
 function Login() {
@@ -22,7 +23,7 @@ function Login() {
 
     setLoading(true);
     try {
-      const res = await axios.post("http://localhost:5000/api/auth/login", {
+      const res = await axios.post(`${BASE_URL}/auth/login`, {
         email,
         password
       });

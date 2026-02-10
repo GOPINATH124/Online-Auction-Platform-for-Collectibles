@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { useToast } from "../componets/ToastContainer";
+import { BASE_URL } from "../config/apiConfig";
 import "./MyBids.css";
 
 function MyBids() {
@@ -34,7 +35,7 @@ function MyBids() {
 
   const fetchMyBids = async () => {
     try {
-      const res = await axios.get("http://localhost:5000/api/auctions", {
+      const res = await axios.get(`${BASE_URL}/auctions`, {
         headers: { Authorization: `Bearer ${token}` },
       });
 

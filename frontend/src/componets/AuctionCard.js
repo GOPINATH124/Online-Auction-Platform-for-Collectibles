@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import Countdown from "./CountdownTimer";
 import axios from "axios";
 import { useToast } from "./ToastContainer";
+import { BASE_URL } from "../config/apiConfig";
 import './AuctionCard.css';
 
 const AuctionCard = ({ auction, refreshAuctions }) => {
@@ -27,7 +28,7 @@ const AuctionCard = ({ auction, refreshAuctions }) => {
 
     try {
       const res = await axios.post(
-        `http://localhost:5000/api/bids/${auction._id}/bid`,
+        `${BASE_URL}/bids/${auction._id}/bid`,
         { amount: bidAmount, userId },
         {
           headers: {

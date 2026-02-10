@@ -4,6 +4,7 @@ import axios from "axios";
 import { useToast } from "../componets/ToastContainer";
 import { useSocket } from "../componets/SocketContext";
 import { QRCodeSVG } from "qrcode.react";
+import { BASE_URL } from "../config/apiConfig";
 import "./Payment.css";
 
 const Payment = () => {
@@ -57,7 +58,7 @@ const Payment = () => {
   // Fetch auction details
   const fetchAuction = async () => {
     try {
-      const res = await axios.get(`http://localhost:5000/api/auctions/${auctionId}`, {
+      const res = await axios.get(`${BASE_URL}/auctions/${auctionId}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       setAuction(res.data);
@@ -145,7 +146,7 @@ const Payment = () => {
     setTimeout(async () => {
       try {
         const res = await axios.post(
-          `http://localhost:5000/api/auctions/${auctionId}/pay`,
+          `${BASE_URL}/auctions/${auctionId}/pay`,
           { method: paymentMethod === "qr" ? "QR Code" : "Direct Payment" },
           {
             headers: { Authorization: `Bearer ${token}` },

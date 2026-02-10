@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
 import { useSocket } from './SocketContext';
+import { BASE_URL } from '../config/apiConfig';
 import './ChatModal.css';
 
 function ChatModal({ auctionId, auctionTitle, onClose }) {
@@ -42,7 +43,7 @@ function ChatModal({ auctionId, auctionTitle, onClose }) {
   const fetchChat = async () => {
     try {
       const res = await axios.get(
-        `http://localhost:5000/api/chat/${auctionId}`,
+        `${BASE_URL}/chat/${auctionId}`,
         { headers: { Authorization: `Bearer ${token}` } }
       );
       setChatId(res.data.chat._id);
@@ -52,7 +53,7 @@ function ChatModal({ auctionId, auctionTitle, onClose }) {
       
       // Mark messages as read
       await axios.put(
-        `http://localhost:5000/api/chat/${auctionId}/read`,
+        `${BASE_URL}/chat/${auctionId}/read`,
         {},
         { headers: { Authorization: `Bearer ${token}` } }
       );
@@ -74,7 +75,7 @@ function ChatModal({ auctionId, auctionTitle, onClose }) {
     setSending(true);
     try {
       await axios.post(
-        `http://localhost:5000/api/chat/${auctionId}/message`,
+        `${BASE_URL}/chat/${auctionId}/message`,
         { message: newMessage },
         { headers: { Authorization: `Bearer ${token}` } }
       );
@@ -173,3 +174,4 @@ function ChatModal({ auctionId, auctionTitle, onClose }) {
 }
 
 export default ChatModal;
+

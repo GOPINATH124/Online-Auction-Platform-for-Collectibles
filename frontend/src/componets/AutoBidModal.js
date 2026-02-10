@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { BASE_URL } from '../config/apiConfig';
 import './AutoBidModal.css';
 
 function AutoBidModal({ auctionId, currentBid, onClose, onSuccess }) {
@@ -17,7 +18,7 @@ function AutoBidModal({ auctionId, currentBid, onClose, onSuccess }) {
   const fetchAutoBid = async () => {
     try {
       const res = await axios.get(
-        `http://localhost:5000/api/auto-bids/${auctionId}`,
+        `${BASE_URL}/auto-bids/${auctionId}`,
         { headers: { Authorization: `Bearer ${token}` } }
       );
       if (res.data.hasAutoBid) {
@@ -44,7 +45,7 @@ function AutoBidModal({ auctionId, currentBid, onClose, onSuccess }) {
     setSubmitting(true);
     try {
       await axios.post(
-        `http://localhost:5000/api/auto-bids/${auctionId}`,
+        `${BASE_URL}/auto-bids/${auctionId}`,
         { maxAmount: bidAmount },
         { headers: { Authorization: `Bearer ${token}` } }
       );
@@ -62,7 +63,7 @@ function AutoBidModal({ auctionId, currentBid, onClose, onSuccess }) {
     setSubmitting(true);
     try {
       await axios.delete(
-        `http://localhost:5000/api/auto-bids/${auctionId}`,
+        `${BASE_URL}/auto-bids/${auctionId}`,
         { headers: { Authorization: `Bearer ${token}` } }
       );
       onSuccess && onSuccess();
@@ -162,3 +163,4 @@ function AutoBidModal({ auctionId, currentBid, onClose, onSuccess }) {
 }
 
 export default AutoBidModal;
+

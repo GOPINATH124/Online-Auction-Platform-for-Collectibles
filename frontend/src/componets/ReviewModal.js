@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { useToast } from './ToastContainer';
+import { BASE_URL } from '../config/apiConfig';
 import './ReviewModal.css';
 
 const ReviewModal = ({ isOpen, onClose, sellerId, sellerName, auctionId, onReviewSubmitted }) => {
@@ -24,7 +25,7 @@ const ReviewModal = ({ isOpen, onClose, sellerId, sellerName, auctionId, onRevie
     setSubmitting(true);
     try {
       await axios.post(
-        'http://localhost:5000/api/reviews/add',
+        `${BASE_URL}/reviews/add`,
         {
           sellerId,
           rating,
@@ -108,3 +109,4 @@ const ReviewModal = ({ isOpen, onClose, sellerId, sellerName, auctionId, onRevie
 };
 
 export default ReviewModal;
+

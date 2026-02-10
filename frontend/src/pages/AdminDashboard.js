@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { useToast } from '../componets/ToastContainer';
+import { BASE_URL } from '../config/apiConfig';
 import './AdminDashboard.css';
 
 const AdminDashboard = () => {
@@ -22,16 +23,16 @@ const AdminDashboard = () => {
   const fetchData = async () => {
     try {
       const [statsRes, usersRes, auctionsRes, paymentsRes] = await Promise.all([
-        axios.get('http://localhost:5000/api/admin/statistics', {
+        axios.get(`${BASE_URL}/admin/statistics`, {
           headers: { Authorization: `Bearer ${token}` }
         }),
-        axios.get('http://localhost:5000/api/admin/users', {
+        axios.get(`${BASE_URL}/admin/users`, {
           headers: { Authorization: `Bearer ${token}` }
         }),
-        axios.get('http://localhost:5000/api/admin/auctions', {
+        axios.get(`${BASE_URL}/admin/auctions`, {
           headers: { Authorization: `Bearer ${token}` }
         }),
-        axios.get('http://localhost:5000/api/admin/payments', {
+        axios.get(`${BASE_URL}/admin/payments`, {
           headers: { Authorization: `Bearer ${token}` }
         })
       ]);
@@ -57,7 +58,7 @@ const AdminDashboard = () => {
     if (!window.confirm('Are you sure you want to delete this user?')) return;
 
     try {
-      await axios.delete(`http://localhost:5000/api/admin/users/${userId}`, {
+      await axios.delete(`${BASE_URL}/admin/users/${userId}`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       toast.success('User deleted successfully');
@@ -69,7 +70,7 @@ const AdminDashboard = () => {
 
   const handleToggleUserStatus = async (userId) => {
     try {
-      await axios.put(`http://localhost:5000/api/admin/users/${userId}/toggle-status`, {}, {
+      await axios.put(`${BASE_URL}/admin/users/${userId}/toggle-status`, {}, {
         headers: { Authorization: `Bearer ${token}` }
       });
       toast.success('User status updated');
@@ -83,7 +84,7 @@ const AdminDashboard = () => {
     if (!window.confirm('Are you sure you want to delete this auction?')) return;
 
     try {
-      await axios.delete(`http://localhost:5000/api/admin/auctions/${auctionId}`, {
+      await axios.delete(`${BASE_URL}/admin/auctions/${auctionId}`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       toast.success('Auction deleted successfully');
@@ -366,3 +367,4 @@ const AdminDashboard = () => {
 };
 
 export default AdminDashboard;
+

@@ -3,6 +3,14 @@ import io from 'socket.io-client';
 import { useToast } from './ToastContainer';
 import { sendNotification, NotificationTypes, requestNotificationPermission } from '../utils/pushNotifications';
 
+// Get WebSocket URL based on environment
+const getSocketURL = () => {
+  if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
+    return 'http://localhost:5000';
+  }
+  return 'https://online-auction-platform-for-collectible.onrender.com';
+};
+
 const SocketContext = createContext();
 
 export const useSocket = () => {
@@ -21,7 +29,7 @@ export const SocketProvider = ({ children }) => {
     requestNotificationPermission();
 
     // Connect to Socket.io server
-    const newSocket = io('http://localhost:5000');
+    const newSocket = io(getSocketURL());
     
     newSocket.on('connect', () => {
       console.log('Connected to Socket.io server');

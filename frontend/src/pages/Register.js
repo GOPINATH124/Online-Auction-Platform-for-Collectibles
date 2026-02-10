@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { useToast } from "../componets/ToastContainer";
+import { BASE_URL } from "../config/apiConfig";
 import './Register.css';
 
 const Register = () => {
@@ -78,7 +79,7 @@ const Register = () => {
 
     try {
       const res = await axios.post(
-        "http://localhost:5000/api/auth/register",
+        `${BASE_URL}/auth/register`,
         {
           name: user.name,
           email: user.email,

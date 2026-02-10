@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import { BASE_URL } from '../config/apiConfig';
 import './RatingDisplay.css';
 
 const RatingDisplay = ({ sellerId, showReviews = true }) => {
@@ -16,7 +17,7 @@ const RatingDisplay = ({ sellerId, showReviews = true }) => {
   const fetchRating = async () => {
     try {
       const res = await axios.get(
-        `http://localhost:5000/api/reviews/seller/${sellerId}`,
+        `${BASE_URL}/reviews/seller/${sellerId}`,
         { headers: { Authorization: `Bearer ${token}` } }
       );
       setRatingData(res.data);
@@ -101,3 +102,4 @@ const RatingDisplay = ({ sellerId, showReviews = true }) => {
 };
 
 export default RatingDisplay;
+

@@ -4,6 +4,7 @@ import axios from "axios";
 import { useToast } from "../componets/ToastContainer";
 import { generateInvoice, generateReceipt } from "../utils/invoiceGenerator";
 import ReviewModal from "../componets/ReviewModal";
+import { BASE_URL } from "../config/apiConfig";
 import "./MyPurchases.css";
 
 function MyPurchases() {
@@ -27,7 +28,7 @@ function MyPurchases() {
 
   const fetchPurchases = async () => {
     try {
-      const res = await axios.get("http://localhost:5000/api/auctions", {
+      const res = await axios.get(`${BASE_URL}/auctions`, {
         headers: { Authorization: `Bearer ${token}` },
       });
 

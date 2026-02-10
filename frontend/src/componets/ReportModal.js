@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import { BASE_URL } from '../config/apiConfig';
 import './ReportModal.css';
 
 function ReportModal({ auctionId, auctionTitle, onClose, onSuccess }) {
@@ -28,7 +29,7 @@ function ReportModal({ auctionId, auctionTitle, onClose, onSuccess }) {
     setSubmitting(true);
     try {
       const res = await axios.post(
-        `http://localhost:5000/api/reports/${auctionId}`,
+        `${BASE_URL}/reports/${auctionId}`,
         { reason, description },
         { headers: { Authorization: `Bearer ${token}` } }
       );
@@ -111,3 +112,4 @@ function ReportModal({ auctionId, auctionTitle, onClose, onSuccess }) {
 }
 
 export default ReportModal;
+

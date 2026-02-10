@@ -2,6 +2,7 @@ import { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { useToast } from "../componets/ToastContainer";
+import { BASE_URL } from '../config/apiConfig';
 import './CreateAuction.css';
 
 function CreateAuction() {
@@ -125,7 +126,7 @@ function CreateAuction() {
       });
 
       const response = await axios.post(
-        "http://localhost:5000/api/auctions",
+        `${BASE_URL}/auctions`,
         formData,
         {
           headers: {
@@ -399,3 +400,4 @@ function CreateAuction() {
 }
 
 export default CreateAuction;
+

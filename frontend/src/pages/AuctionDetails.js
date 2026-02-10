@@ -8,6 +8,7 @@ import SocialShare from '../componets/SocialShare';
 import AutoBidModal from '../componets/AutoBidModal';
 import ReportModal from '../componets/ReportModal';
 import ChatModal from '../componets/ChatModal';
+import { BASE_URL } from '../config/apiConfig';
 import './AuctionDetails.css';
 
 const AuctionDetails = () => {
@@ -72,7 +73,7 @@ const AuctionDetails = () => {
 
   const fetchAuctionDetails = async () => {
     try {
-      const res = await axios.get(`http://localhost:5000/api/auctions/${id}`, {
+      const res = await axios.get(`${BASE_URL}/auctions/${id}`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       setAuction(res.data);
@@ -86,7 +87,7 @@ const AuctionDetails = () => {
 
   const fetchUsers = async () => {
     try {
-      const res = await axios.get('http://localhost:5000/api/auth/users', {
+      const res = await axios.get(`${BASE_URL}/auth/users`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       const usersMap = {};
@@ -101,7 +102,7 @@ const AuctionDetails = () => {
 
   const fetchReports = async () => {
     try {
-      const res = await axios.get(`http://localhost:5000/api/reports/${id}`, {
+      const res = await axios.get(`${BASE_URL}/reports/${id}`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       setReports(res.data.reports || []);
@@ -132,7 +133,7 @@ const AuctionDetails = () => {
     try {
       console.log('Sending bid request...');
       const response = await axios.post(
-        `http://localhost:5000/api/bids/${id}`,
+        `${BASE_URL}/bids/${id}`,
         { amount: bidValue },
         { headers: { Authorization: `Bearer ${token}` } }
       );
@@ -159,7 +160,7 @@ const AuctionDetails = () => {
     }
 
     try {
-      await axios.delete(`http://localhost:5000/api/auctions/${id}`, {
+      await axios.delete(`${BASE_URL}/auctions/${id}`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       toast.success('Auction deleted successfully');
@@ -180,7 +181,7 @@ const AuctionDetails = () => {
 
     try {
       const response = await axios.post(
-        `http://localhost:5000/api/auctions/${id}/buy-now`,
+        `${BASE_URL}/auctions/${id}/buy-now`,
         {},
         { headers: { Authorization: `Bearer ${token}` } }
       );
@@ -697,3 +698,4 @@ const AuctionDetails = () => {
 };
 
 export default AuctionDetails;
+

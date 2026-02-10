@@ -3,6 +3,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import AuctionCard from "../componets/AuctionCard";
 import { useToast } from "../componets/ToastContainer";
+import { BASE_URL } from "../config/apiConfig";
 import './Auctions.css';
 
 const Auctions = () => {
@@ -27,7 +28,7 @@ const Auctions = () => {
         },
       } : {};
       
-      const res = await axios.get("http://localhost:5000/api/auctions", config);
+      const res = await axios.get(`${BASE_URL}/auctions`, config);
       setAuctions(res.data);
       setLoading(false);
     } catch (err) {

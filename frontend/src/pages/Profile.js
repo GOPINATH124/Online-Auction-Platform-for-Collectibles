@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { useToast } from '../componets/ToastContainer';
+import { BASE_URL } from '../config/apiConfig';
 import './Profile.css';
 
 const Profile = () => {
@@ -39,7 +40,7 @@ const Profile = () => {
 
   const fetchProfile = async () => {
     try {
-      const res = await axios.get('http://localhost:5000/api/auth/profile', {
+      const res = await axios.get(`${BASE_URL}/auth/profile`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       setUser(res.data);
@@ -59,7 +60,7 @@ const Profile = () => {
 
   const fetchStats = async () => {
     try {
-      const auctionsRes = await axios.get('http://localhost:5000/api/auctions', {
+      const auctionsRes = await axios.get(`${BASE_URL}/auctions`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       const auctions = auctionsRes.data;
@@ -97,7 +98,7 @@ const Profile = () => {
   const handleUpdateProfile = async (e) => {
     e.preventDefault();
     try {
-      await axios.put('http://localhost:5000/api/auth/profile', formData, {
+      await axios.put(`${BASE_URL}/auth/profile`, formData, {
         headers: { Authorization: `Bearer ${token}` }
       });
       toast.success('Profile updated successfully! ✓');
@@ -122,7 +123,7 @@ const Profile = () => {
     }
 
     try {
-      await axios.put('http://localhost:5000/api/auth/change-password', {
+      await axios.put(`${BASE_URL}/auth/change-password`, {
         currentPassword: passwordData.currentPassword,
         newPassword: passwordData.newPassword
       }, {
@@ -377,3 +378,4 @@ const Profile = () => {
 };
 
 export default Profile;
+

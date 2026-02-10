@@ -7,6 +7,7 @@ import AutoBidModal from "../componets/AutoBidModal";
 import SocialShare from "../componets/SocialShare";
 import ReportModal from "../componets/ReportModal";
 import ChatModal from "../componets/ChatModal";
+import { BASE_URL } from "../config/apiConfig";
 
 const PlaceBid = () => {
   const { auctionId } = useParams();
@@ -25,7 +26,7 @@ const PlaceBid = () => {
   useEffect(() => {
     const fetchAuction = async () => {
       try {
-        const res = await axios.get(`http://localhost:5000/api/auctions/${auctionId}`, {
+        const res = await axios.get(`${BASE_URL}/auctions/${auctionId}`, {
           headers: {
             Authorization: `Bearer ${token}`,
           },
@@ -62,7 +63,7 @@ const PlaceBid = () => {
 
     try {
       const res = await axios.post(
-        `http://localhost:5000/api/auctions/${auctionId}/bid`,
+        `${BASE_URL}/auctions/${auctionId}/bid`,
         { amount: bidValue, userId },
         {
           headers: { Authorization: `Bearer ${token}` },

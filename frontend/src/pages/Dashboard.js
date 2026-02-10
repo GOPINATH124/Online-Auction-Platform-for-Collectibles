@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from "axios";
+import { BASE_URL } from '../config/apiConfig';
 import { t } from '../utils/translations';
 import './Dashboard.css';
 
@@ -35,7 +36,7 @@ function Dashboard() {
 
   const fetchStats = async () => {
     try {
-      const res = await axios.get("http://localhost:5000/api/auctions", {
+      const res = await axios.get(`${BASE_URL}/auctions`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       const auctions = res.data;

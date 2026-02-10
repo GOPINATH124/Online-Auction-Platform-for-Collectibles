@@ -13,6 +13,9 @@ const getBaseURL = () => {
 
 const BASE_URL = getBaseURL();
 
+// Export BASE_URL for use in other components
+export { BASE_URL };
+
 // Configure axios defaults
 axios.defaults.withCredentials = false;
 

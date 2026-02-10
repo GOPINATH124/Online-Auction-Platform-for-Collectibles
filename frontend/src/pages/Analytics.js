@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import { BASE_URL } from '../config/apiConfig';
 import './Analytics.css';
 
 function Analytics() {
@@ -16,7 +17,7 @@ function Analytics() {
 
   const fetchAuctions = async () => {
     try {
-      const res = await axios.get("http://localhost:5000/api/auctions", {
+      const res = await axios.get(`${BASE_URL}/auctions`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       setAuctions(res.data);
@@ -233,3 +234,4 @@ function Analytics() {
 }
 
 export default Analytics;
+
