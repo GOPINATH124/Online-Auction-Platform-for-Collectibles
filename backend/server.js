@@ -10,7 +10,7 @@ const server = http.createServer(app);
 
 // CORS Configuration
 const corsOptions = {
-  origin: ["https://online-auction-platform-for-collect-seven.vercel.app", "http://localhost:3000"],
+   origin: ["https://online-auction-platform-for-collect-seven.vercel.app", "http://localhost:3000"],
   methods: ["GET", "POST", "PUT", "DELETE", "PATCH"],
   allowedHeaders: ["Content-Type", "Authorization"],
   credentials: true
