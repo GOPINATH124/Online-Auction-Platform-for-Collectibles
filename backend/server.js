@@ -7,15 +7,25 @@ const { Server } = require("socket.io");
 
 const app = express();
 const server = http.createServer(app);
+
+// CORS Configuration
+const corsOptions = {
+  origin: ["https://online-auction-platform-for-collect-seven.vercel.app", "http://localhost:3000"],
+  methods: ["GET", "POST", "PUT", "DELETE", "PATCH"],
+  allowedHeaders: ["Content-Type", "Authorization"],
+  credentials: true
+};
+
 const io = new Server(server, {
   cors: {
-    origin: "https://online-auction-platform-for-collect-seven.vercel.app/",
-    methods: ["GET", "POST"]
+    origin: ["https://online-auction-platform-for-collect-seven.vercel.app", "http://localhost:3000"],
+    methods: ["GET", "POST"],
+    credentials: true
   }
 });
 
 app.use(express.json());
-app.use(cors());
+app.use(cors(corsOptions));
 
 // Make io accessible to routes
 app.set('io', io);

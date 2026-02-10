@@ -1,7 +1,10 @@
 import axios from "axios";
 
-// Base URL for backend
-const BASE_URL = "https://online-auction-platform-for-collectible.onrender.com/api";
+// Base URL for backend - use environment variable or fallback to production URL
+const BASE_URL = process.env.REACT_APP_API_URL || "https://online-auction-platform-for-collectible.onrender.com/api";
+
+// Configure axios defaults
+axios.defaults.withCredentials = false;
 
 // Get token from localStorage
 const getAuthHeaders = () => {
